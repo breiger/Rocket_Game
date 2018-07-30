@@ -24,7 +24,7 @@
 
 	var canvas = document.querySelector("canvas");
 	var context = canvas.getContext("2d");
-	var counter = 0; 
+	window.addEventListener('resize', update, false); 
 	
 	//Field of stars? Fill the background with a random arrangement of white pixels that scrolls. 
 	//Do it row by row.   
@@ -55,6 +55,8 @@
 	update();
 	
 	function update(){ 
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight; 
 		popper = field_of_stars.pop(); //moving one row of stars from the end to the beginning
 									   // of the array every frame causes scrolling?
 		field_of_stars.unshift(popper); 	 
