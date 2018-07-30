@@ -53,7 +53,7 @@
 		popper = field_of_stars.pop(); //moving one row of stars from the end to the beginning
 									   // of the array every frame causes scrolling?
 		field_of_stars.unshift(popper);
-		for (var i=0; i<height; i++){
+		for (var i=0; i < canvas.height; i++){
 			context.putImageData(field_of_stars[i], 0, i);
 		}
 		requestAnimationFrame(update);
