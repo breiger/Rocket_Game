@@ -3,16 +3,6 @@
 <head>
 	<title>Scrolling Field of Stars</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-	canvas {
-		height: 100%;
-		width: 100%;
-		border: 5px solid silver;
-		background: black; 
-	}
-	
-	
-	</style>
 </head>
 <body>
 
@@ -23,6 +13,8 @@
 <script>
 
 	var canvas = document.querySelector("canvas");
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight; 
 	var context = canvas.getContext("2d");
 	window.addEventListener('resize', update, false); 
 	
