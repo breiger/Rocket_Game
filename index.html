@@ -41,7 +41,8 @@
     		}
 	}
 	
-	thruster_sound = new sound('rocket-launch.mp3');			  
+	thruster_sound = new sound('rocket-launch.mp3');
+	thrster_sound.addEventListener("ended", play_sound, false);
 	var canvas = document.querySelector("canvas");
 	canvas.addEventListener("touchstart", play_sound, false);  
 	canvas.width = window.innerWidth;
@@ -131,6 +132,7 @@
 	}
 	
 	function play_sound(){
+		thruster_sound.currentTime = 0; 
 		thruster_sound.play(); 
 	}
 	
