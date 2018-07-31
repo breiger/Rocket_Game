@@ -48,8 +48,8 @@
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 		
-		rocket.width = rocket.image.width * (rocket.image.width/window.innerWidth);
-		rocket.height = rocket.image.height * (rocket.image.height/window.innerHeight); 
+		rocket.width = rocket.image.width * (rocket.image.width/window.innerWidth) * 10;
+		rocket.height = rocket.image.height * (rocket.image.height/window.innerHeight) * 10; 
 		rocket.centerX = canvas.width / 2;
 		rocket.centerY = canvas.height / 2; 
 		rocket.x = rocket.centerX - rocket.width / 2;
