@@ -37,6 +37,8 @@
 	var rocket = {}; //Make the rocket size relative to the canvas and center it.  
 	rocket.image = new Image();
 	rocket.image.src = 'rocket.png';
+	rocket.width = window.innerWidth * .15;
+	rocket.height = window.innerHeight *.3;
 	
 	//Field of stars? Fill the background with a random arrangement of white pixels that scrolls. 
 	//Do it row by row.   
