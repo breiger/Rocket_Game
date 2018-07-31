@@ -31,6 +31,10 @@
 	var context = canvas.getContext("2d");
 	window.addEventListener('resize', create_new_field, false); 
 	
+	var rocket = {};
+	rocket.image = new image();
+	rocket.image.src = 'rocket.png'; 
+	
 	//Field of stars? Fill the background with a random arrangement of white pixels that scrolls. 
 	//Do it row by row.   
 	var field_of_stars;
@@ -69,10 +73,11 @@
 		for (var i=0; i < canvas.height; i++){
 			context.putImageData(field_of_stars[i], 0, i);
 		}
-		context.beginPath();
-		context.arc(canvas.width / 2, canvas.height / 2, canvas.width * .10, 0, 2*Math.PI);
-		context.strokeStyle="yellow"; 
-		context.stroke(); 
+		context.drawImage(rocket.image, 10, 10); 
+		//context.beginPath();
+		//context.arc(canvas.width / 2, canvas.height / 2, canvas.width * .10, 0, 2*Math.PI);
+		//context.strokeStyle="yellow"; 
+		//context.stroke(); 
 		requestAnimationFrame(update);
 	}
 	 
