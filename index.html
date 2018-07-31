@@ -26,7 +26,8 @@
 <script>
 	
 	thruster_sound = new sound('rocket-launch.mp3');
-
+	document.addEventListener("touchstart", thruster_sound.play, false);  
+				  
 	var canvas = document.querySelector("canvas");
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight; 
