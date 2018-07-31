@@ -39,8 +39,8 @@
         		this.sound.pause();
     		}
 	}
+	
 	thruster_sound = new sound('rocket-launch.mp3');
-	thruster_sound.play(); 
 
 	var canvas = document.querySelector("canvas");
 	canvas.width = window.innerWidth;
@@ -95,6 +95,7 @@
 	
 	create_new_field(); 
 	update();
+	thruster_sound.play(); 
 	
 	function update(){
 		popper = field_of_stars.pop(); //moving one row of stars from the end to the beginning
