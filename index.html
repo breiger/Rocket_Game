@@ -30,10 +30,11 @@
 	canvas.height = window.innerHeight; 
 	var context = canvas.getContext("2d");
 	window.addEventListener('resize', create_new_field, false); 
+	var thrust_color_changer = false; 
 	
 	var rocket = {}; //Make the rocket size relative to the canvas and center it.  
 	rocket.image = new Image();
-	rocket.image.src = 'rocket.png'; 
+	rocket.image.src = 'rocket.png';
 	
 	//Field of stars? Fill the background with a random arrangement of white pixels that scrolls. 
 	//Do it row by row.   
@@ -47,8 +48,10 @@
 		
 		rocket.width = canvas.width * 0.15;
 		rocket.height = canvas.height * 0.2;
-		rocket.x = canvas.width / 2 - rocket.width / 2;
-		rocket.y = canvas.height / 2 - rocket.height / 2; 
+		rocket.centerX = canvas.width / 2;
+		rocket.centerY = canvas.height / 2; 
+		rocket.x = rocket.centerX - rocket.width / 2;
+		rocket.y = rocket.centerY - rocket.height / 2; 
 		
 		field_of_stars = []; 
 		for (var j = 0; j < canvas.height + 1; j++){ //make an array of image objects that are random arrangements of stars. 
@@ -79,12 +82,21 @@
 		field_of_stars.unshift(popper);
 		for (var i=0; i < canvas.height; i++){
 			context.putImageData(field_of_stars[i], 0, i);
+		} 
+		context.beginPath();
+		context.arc(rocket.cenerX, rocket.centerY, rocket.width * .30, 0, 2*Math.PI);
+		if (thrust_color_changer){
+			context.fillStyle="yellow"; 
+			context.strokeStyle="yellow";
+			thrust_color_changer=false; 
 		}
-		context.drawImage(rocket.image, rocket.x, rocket.y, rocket.width, rocket.height); 
-		//context.beginPath();
-		//context.arc(canvas.width / 2, canvas.height / 2, canvas.width * .10, 0, 2*Math.PI);
-		//context.strokeStyle="yellow"; 
-		//context.stroke(); 
+		else {
+			context.fillStyle="orange";
+			context.strokeStyle="orange; 
+		}
+		context.stroke();
+		context.fill();
+		context.drawImage(rocket.image, rocket.x, rocket.y, rocket.width, rocket.height);
 		requestAnimationFrame(update);
 	}
 	 
