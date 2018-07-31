@@ -19,33 +19,21 @@
 </head>
 <body>
 
-<canvas></canvas>
+	<audio loop id="myaudio"></audio>
+
+	<canvas></canvas>
 
 </body>
 
 <script>
 	
-	function sound(src) {
-   		this.sound = document.createElement("audio");
-    		this.sound.src = src;
-    		this.sound.setAttribute("preload", "auto");
-    		this.sound.setAttribute("controls", "none");
-    		this.sound.style.display = "none";
-    		document.body.appendChild(this.sound);
-   		this.play = function(){
-			console.log("in play()");
-			console.log("currentTime: ", this.sound.currentTime);
-			this.sound.currentTime = 0; 
-			console.log("currentTime: ", this.sound.currentTime); 
-       			this.sound.play();
-    		}
-    		this.stop = function(){
-        		this.sound.pause();
-    		}
-	}
 	
-	thruster_sound = new sound('rocket-launch.mp3');
-	thruster_sound.sound.addEventListener("ended", play_sound, false);
+   	var thruster_sound = document.getElementyById("myaudio");
+    	turster_sound.src = 'rocket-launch.mp3';
+    	turster_sound.setAttribute("preload", "auto");
+    	turster_sound.setAttribute("controls", "none");
+    	turster_sound.style.display = "none";
+	thruster_sound.addEventListener("ended", play_sound, false);
 	var canvas = document.querySelector("canvas");
 	canvas.addEventListener("touchstart", play_sound, false); 
 	canvas.addEventListener("click", play_sound, false); 
@@ -136,7 +124,7 @@
 	}
 	
 	function play_sound(){
-		console.log("in play sound"); 
+		thruster_sound.currentTime = 0; 
 		thruster_sound.play(); 
 	}
 	
