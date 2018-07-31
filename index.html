@@ -31,7 +31,11 @@
 	var context = canvas.getContext("2d");
 	window.addEventListener('resize', create_new_field, false); 
 	
-	var rocket = {};
+	var rocket = {}; //Make the rocket size relative to the canvas and center it. 
+	rocket.width = canvas.width * 0.1;
+	rocket.height = canvas.height * 0.1;
+	rocket.x = canvas.width / 2 + rocket.width / 2;
+	rocket.y = canvas.height / 2 + rocket.height / 2; 
 	rocket.image = new Image();
 	rocket.image.src = 'rocket.png'; 
 	
