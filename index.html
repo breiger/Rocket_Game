@@ -31,7 +31,6 @@
 	var context = canvas.getContext("2d");
 	window.addEventListener('resize', create_new_field, false); 
 	var thrust_color_changer = false; 
-	var thrust_color_changer2 = false; 
 	
 	var rocket = {}; //Make the rocket size relative to the canvas and center it.  
 	rocket.image = new Image();
@@ -80,45 +79,35 @@
 	create_new_field(); 
 	update();
 	
-	function update(){  
+	function update(){
 		popper = field_of_stars.pop(); //moving one row of stars from the end to the beginning
 									   // of the array every frame causes scrolling?
 		field_of_stars.unshift(popper);
 		for (var i=0; i < canvas.height; i++){
 			context.putImageData(field_of_stars[i], 0, i);
-		} 
+		}
+		var gradient1 = context.createRadialGradient(rocket.centerX, rocket.centerY + rocket.height * .40, rocket.width * .40 , rocket.centerX ,rocket.centerY + rocket.height ,rocket.width);
+		gradient1.addColorStop(0, "blue");
+		gradient1.addColorStop(1, "yellow"); 
+		var gradient2 = context.createRadialGradient(rocket.centerX, rocket.centerY + rocket.height * .40, rocket.width * .40 , rocket.centerX ,rocket.centerY + rocket.height ,rocket.width);
+		gradient2.addColorStop(0, "black");
+		gradient2.addColorStop(1, "orange");
 		context.beginPath();//draw the thrust cone
 		context.arc(rocket.centerX, rocket.centerY + rocket.height * .40, rocket.width / 2, 1.25 * Math.PI, 1.8 * Math.PI);
 		if (thrust_color_changer){
-			context.fillStyle="yellow"; 
-			context.strokeStyle="yellow";
+			context.fillStyle=gradient1; 
+			context.strokeStyle=gradient1;
 			thrust_color_changer=false; 
 		}
 		else {
-			context.fillStyle="orange";
-			context.strokeStyle="orange";
+			context.fillStyle=gradient2;
+			context.strokeStyle=gradient2;
 			thrust_color_changer=true; 
 		}
 		context.lineTo(rocket.centerX, rocket.centerY + rocket.height);
 		context.lineTo(rocket.centerX - rocket.width * .4, rocket.centerY + rocket.height * .25); 
 		context.stroke();
 		context.fill();
-		context.beginPath();//draw the blue fire core? 
-		context.arc(rocket.centerX, rocket.centerY + rocket.height * .4, rocket.width * .40, 1.35 * Math.PI, 1.75 * Math.PI);
-		if (thrust_color_changer2){
-			context.fillStyle="blue"; 
-			context.strokeStyle="blue";
-			thrust_color_changer2=false; 
-		}
-		else {
-			context.fillStyle="black";
-			context.strokeStyle="black";
-			thrust_color_changer2=true; 
-		}
-		context.lineTo(rocket.centerX, rocket.centerY + rocket.height / 2);
-		context.lineTo(rocket.centerX - rocket.width * .3, rocket.centerY + rocket.height * .10);
-		context.stroke();
-		context.fill(); 
 		context.drawImage(rocket.image, rocket.x, rocket.y, rocket.width, rocket.height);
 		requestAnimationFrame(update);
 	}
