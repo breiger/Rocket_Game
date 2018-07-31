@@ -30,6 +30,7 @@
     		this.sound.src = src;
     		this.sound.setAttribute("preload", "auto");
     		this.sound.setAttribute("controls", "none");
+		this.sound.setAttribute("loop", "true"); 
     		this.sound.style.display = "none";
     		document.body.appendChild(this.sound);
    		this.play = function(){
@@ -130,12 +131,7 @@
 	}
 	
 	function play_sound(){
-		while (true) {
-			thruster_sound.play();
-			if (thruster_sound.time === 5) {
-				thruster_sound.time = 0;
-			}
-		}
+		thruster_sound.play(); 
 	}
 	
 	
