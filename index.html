@@ -34,7 +34,9 @@
     		document.body.appendChild(this.sound);
    		this.play = function(){
 			console.log("in play()");
+			console.log("currentTime: ", this.sound.currentTime);
 			this.sound.currentTime = 0; 
+			console.log("currentTime: ", this.sound.currentTime); 
        			this.sound.play();
     		}
     		this.stop = function(){
