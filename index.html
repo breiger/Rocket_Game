@@ -41,6 +41,10 @@
 	}
 	
 	thruster_sound = new sound('rocket-launch.mp3');
+	myAudio.addEventListener('ended', function() {
+    		this.currentTime = 0;
+    		this.play();
+		}, false); 
 				  
 	var canvas = document.querySelector("canvas");
 	canvas.addEventListener("touchstart", play_sound, false);  
