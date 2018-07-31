@@ -87,12 +87,12 @@
 			context.putImageData(field_of_stars[i], 0, i);
 		}
 		var gradient1 = context.createRadialGradient(rocket.centerX ,rocket.centerY, rocket.width, rocket.centerX, rocket.centerY, rocket.width * 2);
-		gradient1.addColorStop(0.3, "white")
-		gradient1.addColorStop(0.5, "yellow");
+		gradient1.addColorStop(0, "white")
+		gradient1.addColorStop(0, "yellow");
 		gradient1.addColorStop(1, "red"); 
 		var gradient2 = context.createRadialGradient(rocket.centerX ,rocket.centerY, rocket.width, rocket.centerX, rocket.centerY, rocket.width * 2);
-		gradient2.addColorStop(0.3, "blue");
-		gradient2.addColorStop(0.5, "orange");
+		gradient2.addColorStop(0, "blue");
+		gradient2.addColorStop(0, "orange");
 		gradient2.addColorStop(1, "black");
 		context.beginPath();//draw the thrust cone
 		context.arc(rocket.centerX, rocket.centerY + rocket.height * .40, rocket.width / 2, 1.25 * Math.PI, 1.8 * Math.PI);
