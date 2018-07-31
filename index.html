@@ -31,11 +31,7 @@
 	var context = canvas.getContext("2d");
 	window.addEventListener('resize', create_new_field, false); 
 	
-	var rocket = {}; //Make the rocket size relative to the canvas and center it. 
-	rocket.width = canvas.width * 0.15;
-	rocket.height = canvas.height * 0.3;
-	rocket.x = canvas.width / 2 - rocket.width / 2;
-	rocket.y = canvas.height / 2 - rocket.height / 2; 
+	var rocket = {}; //Make the rocket size relative to the canvas and center it.  
 	rocket.image = new Image();
 	rocket.image.src = 'rocket.png'; 
 	
@@ -43,16 +39,17 @@
 	//Do it row by row.   
 	var field_of_stars;
 	var rand;  
-	//var row = context.createImageData(width, 1); 
+	
 	function create_new_field(){
-		
-		rocket.width = canvas.width * 0.15;
-		rocket.height = canvas.height * 0.3;
-		rocket.x = canvas.width / 2 - rocket.width / 2;
-		rocket.y = canvas.height / 2 - rocket.height / 2; 
 		
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
+		
+		rocket.width = canvas.width * 0.15;
+		rocket.height = canvas.height * 0.2;
+		rocket.x = canvas.width / 2 - rocket.width / 2;
+		rocket.y = canvas.height / 2 - rocket.height / 2; 
+		
 		field_of_stars = []; 
 		for (var j = 0; j < canvas.height + 1; j++){ //make an array of image objects that are random arrangements of stars. 
 			field_of_stars[j] = context.createImageData(canvas.width, 1);
