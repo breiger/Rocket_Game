@@ -33,7 +33,8 @@
     		this.sound.style.display = "none";
     		document.body.appendChild(this.sound);
    		this.play = function(){
-			console.log("in play()"); 
+			console.log("in play()");
+			this.sound.currentTime = 0; 
        			this.sound.play();
     		}
     		this.stop = function(){
@@ -134,7 +135,6 @@
 	
 	function play_sound(){
 		console.log("in play sound"); 
-		thruster_sound.sound.currentTime = 0; 
 		thruster_sound.play(); 
 	}
 	
