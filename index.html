@@ -86,27 +86,34 @@
 		for (var i=0; i < canvas.height; i++){
 			context.putImageData(field_of_stars[i], 0, i);
 		} 
-		context.beginPath();
+		context.beginPath();//draw the thrust cone
 		context.arc(rocket.centerX, rocket.centerY + rocket.height * .40, rocket.width / 2, 1.25 * Math.PI, 1.8 * Math.PI);
-		if (thrust_color_changer){
-			context.fillStyle="yellow"; 
-			context.strokeStyle="yellow";
-			thrust_color_changer=false; 
-		}
-		else {
-			context.fillStyle="orange";
-			context.strokeStyle="orange";
-			thrust_color_changer=true; 
-		}
+		changeStyle("yellow", "orange");
 		context.lineTo(rocket.centerX, rocket.centerY + rocket.height);
 		context.lineTo(rocket.centerX - rocket.width * .4, rocket.centerY + rocket.height * .25); 
 		context.stroke();
 		context.fill();
+		context.beginPath();//draw the blue fire core? 
+		context.arc(rocket.centerX, rocket.centerY + rocket.height * .40, rocket.width / 2, 0, Math.PI)
+		changeStyle("blue", "white");
+		context.stroke();
+		context.fill(); 
 		context.drawImage(rocket.image, rocket.x, rocket.y, rocket.width, rocket.height);
 		requestAnimationFrame(update);
 	}
 	 
-
+	function changeStyle(color1, color2){ //change the stroke and fill styles for fire flickering effect. 
+	if (thrust_color_changer){
+			context.fillStyle=color1; 
+			context.strokeStyle=color1;
+			thrust_color_changer=false; 
+		}
+		else {
+			context.fillStyle=color2;
+			context.strokeStyle=color2;
+			thrust_color_changer=true; 
+		}
+	}
 	
 </script>
 
