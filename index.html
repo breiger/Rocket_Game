@@ -86,11 +86,11 @@
 		for (var i=0; i < canvas.height; i++){
 			context.putImageData(field_of_stars[i], 0, i);
 		}
-		var gradient1 = context.createRadialGradient(rocket.centerX ,rocket.centerY, rocket.width + rocket.width * .20, rocket.centerX, rocket.centerY + rocket.height, rocket.width);
+		var gradient1 = context.createRadialGradient(rocket.centerX ,rocket.centerY, rocket.width * 2, rocket.centerX, rocket.centerY + rocket.height, rocket.width * 4);
 		gradient1.addColorStop(0, "white")
 		gradient1.addColorStop(0.4, "yellow");
 		gradient1.addColorStop(1, "red"); 
-		var gradient2 = context.createRadialGradient(rocket.centerX ,rocket.centerY, rocket.width + rocket.width * .20, rocket.centerX, rocket.centerY + rocket.height, rocket.width);
+		var gradient2 = context.createRadialGradient(rocket.centerX ,rocket.centerY, rocket.width * 2, rocket.centerX, rocket.centerY + rocket.height, rocket.width * 4);
 		gradient2.addColorStop(0, "blue");
 		gradient2.addColorStop(0.4, "orange");
 		gradient2.addColorStop(1, "black");
