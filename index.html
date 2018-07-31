@@ -35,6 +35,7 @@
 	var rocket = {}; //Make the rocket size relative to the canvas and center it.  
 	rocket.image = new Image();
 	rocket.image.src = 'rocket.png';
+	console.log(rocket.image.width); 
 	
 	//Field of stars? Fill the background with a random arrangement of white pixels that scrolls. 
 	//Do it row by row.   
@@ -44,7 +45,6 @@
 	function create_new_field(){
 		
 		var width_ratio, height_ratio = calculate_aspect_change(); //scale image...I hope. 
-		console.log(width_ratio); 
 		
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
