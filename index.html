@@ -44,13 +44,13 @@
 	function create_new_field(){
 		
 		var width_ratio, height_ratio = calculate_aspect_change(); //scale image...I hope. 
+		console.log(width_ratio); 
 		
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 		
 		rocket.width = rocket.image.width * width_ratio;
-		rocket.height = rocket.image.height * height_ratio;
-		console.log(rocket.width, rocket.height); 
+		rocket.height = rocket.image.height * height_ratio; 
 		rocket.centerX = canvas.width / 2;
 		rocket.centerY = canvas.height / 2; 
 		rocket.x = rocket.centerX - rocket.width / 2;
