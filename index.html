@@ -27,9 +27,7 @@
 
 	var canvas = document.querySelector("canvas");
 	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-	width = canvas.width;
-	height = canvas.height; 
+	canvas.height = window.innerHeight; 
 	var context = canvas.getContext("2d");
 	window.addEventListener('resize', create_new_field, false); 
 	var thrust_color_changer = false; 
@@ -37,8 +35,6 @@
 	var rocket = {}; //Make the rocket size relative to the canvas and center it.  
 	rocket.image = new Image();
 	rocket.image.src = 'rocket.png';
-	rocket.width = window.innerWidth * .15;
-	rocket.height = window.innerHeight *.3;
 	
 	//Field of stars? Fill the background with a random arrangement of white pixels that scrolls. 
 	//Do it row by row.   
@@ -47,13 +43,13 @@
 	
 	function create_new_field(){
 		
-		width, height = calculate_aspect_change(); 
+		var width_ratio, height_ratio = calculate_aspect_change(); //scale image...I hope. 
 		
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 		
-		rocket.width = rocket.width + width;
-		rocket.height = rocket.height + height;
+		rocket.width = rocket.image.width * width_ratio;
+		rocket.height = rocket.image.height * height_ratio;
 		rocket.centerX = canvas.width / 2;
 		rocket.centerY = canvas.height / 2; 
 		rocket.x = rocket.centerX - rocket.width / 2;
@@ -81,9 +77,9 @@
 	}
 	
 	function calculate_aspect_change() {
-		width = window.innerWidth - width;
-		height = window.innerHeight - height; 
-		return width, height
+		width_ratio = rocket.image.width/window.innerWidth;
+		height_ratio = rocket.imate.height/window.innerHeight; 
+		return width_ratio, height_ratio;
 	}
 	
 	create_new_field(); 
