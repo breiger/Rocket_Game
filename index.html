@@ -77,7 +77,7 @@
 		for (var i=0; i < canvas.height; i++){
 			context.putImageData(field_of_stars[i], 0, i);
 		}
-		context.drawImage(rocket.image, 10, 10); 
+		context.drawImage(rocket.image, rocket.x, rocket.y, rocket.width, rocket.height); 
 		//context.beginPath();
 		//context.arc(canvas.width / 2, canvas.height / 2, canvas.width * .10, 0, 2*Math.PI);
 		//context.strokeStyle="yellow"; 
