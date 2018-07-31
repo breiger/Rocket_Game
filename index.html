@@ -31,6 +31,7 @@
 	var context = canvas.getContext("2d");
 	window.addEventListener('resize', create_new_field, false); 
 	var thrust_color_changer = false; 
+	var thrust_color_changer2 = false; 
 	
 	var rocket = {}; //Make the rocket size relative to the canvas and center it.  
 	rocket.image = new Image();
@@ -104,18 +105,16 @@
 		context.fill();
 		context.beginPath();//draw the blue fire core? 
 		context.arc(rocket.centerX, rocket.centerY + rocket.height * .20, rocket.width * .40, 0, Math.PI);
-		context.fillStyle="blue";
-		context.strokeStyle="blue";
-		//if (thrust_color_changer){
-		//	context.fillStyle="blue"; 
-		//	context.strokeStyle="blue";
-		//	thrust_color_changer=false; 
-		//}
-		//else {
-		//	context.fillStyle="white";
-		//	context.strokeStyle="white";
-		//	thrust_color_changer=true; 
-		//}
+		if (thrust_color_changer2){
+			context.fillStyle="blue"; 
+			context.strokeStyle="blue";
+			thrust_color_changer2=false; 
+		}
+		else {
+			context.fillStyle="white";
+			context.strokeStyle="white";
+			thrust_color_changer2=true; 
+		}
 		context.stroke();
 		context.fill(); 
 		context.drawImage(rocket.image, rocket.x, rocket.y, rocket.width, rocket.height);
