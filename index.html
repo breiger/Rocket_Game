@@ -87,7 +87,7 @@
 			context.putImageData(field_of_stars[i], 0, i);
 		} 
 		context.beginPath();
-		context.arc(rocket.centerX, rocket.centerY + rocket.height * .75, rocket.width / 2, 1.25 * Math.PI, 1.75 * Math.PI);
+		context.arc(rocket.centerX, rocket.centerY + rocket.height * .5, rocket.width / 2, 1.25 * Math.PI, 1.75 * Math.PI);
 		if (thrust_color_changer){
 			context.fillStyle="yellow"; 
 			context.strokeStyle="yellow";
@@ -99,7 +99,7 @@
 			thrust_color_changer=true; 
 		}
 		context.lineTo(rocket.centerX, rocket.centerY + rocket.height);
-		context.lineTo(rocket.centerX - rocket.width / 2, rocket.centerY + rocket.height * .75); 
+		context.lineTo(rocket.centerX - rocket.width / 2, rocket.centerY + rocket.height * .25); 
 		context.stroke();
 		context.fill();
 		context.drawImage(rocket.image, rocket.x, rocket.y, rocket.width, rocket.height);
