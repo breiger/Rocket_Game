@@ -88,11 +88,11 @@
 		}
 		var gradient1 = context.createRadialGradient(rocket.centerX ,rocket.centerY, rocket.width, rocket.centerX, rocket.centerY, rocket.width * 2);
 		gradient1.addColorStop(0, "white")
-		gradient1.addColorStop(0.4, "yellow");
+		gradient1.addColorStop(0.1, "yellow");
 		gradient1.addColorStop(1, "red"); 
 		var gradient2 = context.createRadialGradient(rocket.centerX ,rocket.centerY, rocket.width, rocket.centerX, rocket.centerY, rocket.width * 2);
 		gradient2.addColorStop(0, "blue");
-		gradient2.addColorStop(0.4, "orange");
+		gradient2.addColorStop(0.1, "orange");
 		gradient2.addColorStop(1, "black");
 		context.beginPath();//draw the thrust cone
 		context.arc(rocket.centerX, rocket.centerY + rocket.height * .40, rocket.width / 2, 1.25 * Math.PI, 1.8 * Math.PI);
