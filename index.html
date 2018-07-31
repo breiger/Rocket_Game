@@ -29,10 +29,10 @@
 	
 	
    	var thruster_sound = document.getElementById("myaudio");
-    	turster_sound.src = 'rocket-launch.mp3';
-    	turster_sound.setAttribute("preload", "auto");
-    	turster_sound.setAttribute("controls", "none");
-    	turster_sound.style.display = "none";
+    	thruster_sound.src = 'rocket-launch.mp3';
+    	thruster_sound.setAttribute("preload", "auto");
+    	thruster_sound.setAttribute("controls", "none");
+    	thruster_sound.style.display = "none";
 	thruster_sound.addEventListener("ended", play_sound, false);
 	var canvas = document.querySelector("canvas");
 	canvas.addEventListener("touchstart", play_sound, false); 
