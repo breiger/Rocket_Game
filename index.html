@@ -42,7 +42,7 @@
 	}
 	
 	thruster_sound = new sound('rocket-launch.mp3');
-	thruster_sound.addEventListener("ended", play_sound, false);
+	thruster_sound.sound.addEventListener("ended", play_sound, false);
 	var canvas = document.querySelector("canvas");
 	canvas.addEventListener("touchstart", play_sound, false);  
 	canvas.width = window.innerWidth;
