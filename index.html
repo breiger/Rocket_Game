@@ -24,6 +24,23 @@
 </body>
 
 <script>
+	
+	function sound(src) {
+   		this.sound = document.createElement("audio");
+    		this.sound.src = src;
+    		this.sound.setAttribute("preload", "auto");
+    		this.sound.setAttribute("controls", "none");
+    		this.sound.style.display = "none";
+    		document.body.appendChild(this.sound);
+   		this.play = function(){
+       			this.sound.play();
+    		}
+    		this.stop = function(){
+        		this.sound.pause();
+    		}
+	}
+	thruster_sound = new sound('rocket-launch.mp3');
+	thruster_sound.play(); 
 
 	var canvas = document.querySelector("canvas");
 	canvas.width = window.innerWidth;
