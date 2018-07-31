@@ -43,15 +43,13 @@
 	var field_of_stars;
 	var rand;  
 	
-	function create_new_field(){
-		
-		var width_ratio, height_ratio = calculate_aspect_change(); //scale image...I hope. 
+	function create_new_field(){ 
 		
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 		
-		rocket.width = rocket.image.width * width_ratio;
-		rocket.height = rocket.image.height * height_ratio; 
+		rocket.width = rocket.image.width * (rocket.image.width/window.innerWidth);
+		rocket.height = rocket.image.height * (rocket.image.height/window.innerHeight); 
 		rocket.centerX = canvas.width / 2;
 		rocket.centerY = canvas.height / 2; 
 		rocket.x = rocket.centerX - rocket.width / 2;
@@ -76,12 +74,6 @@
 				}
 			} 
 		}
-	}
-	
-	function calculate_aspect_change() {
-		width_ratio = rocket.image.width/window.innerWidth;
-		height_ratio = rocket.image.height/window.innerHeight; 
-		return width_ratio, height_ratio;
 	}
 	
 	create_new_field(); 
