@@ -104,7 +104,7 @@
 		context.stroke();
 		context.fill();
 		context.beginPath();//draw the blue fire core? 
-		context.arc(rocket.centerX, rocket.centerY + rocket.height * .4, rocket.width * .40, 1.25 * Math.PI, 1.75 * Math.PI);
+		context.arc(rocket.centerX, rocket.centerY + rocket.height * .5, rocket.width * .40, 1.25 * Math.PI, 1.75 * Math.PI);
 		if (thrust_color_changer2){
 			context.fillStyle="blue"; 
 			context.strokeStyle="blue";
@@ -116,7 +116,7 @@
 			thrust_color_changer2=true; 
 		}
 		context.lineTo(rocket.centerX, rocket.centerY + rocket.height / 2);
-		context.lineTo(rocket.centerX - rocket.width * .3, rocket.centerY + rocket.height * .20);
+		context.lineTo(rocket.centerX - rocket.width * .3, rocket.centerY + rocket.height * .15);
 		context.stroke();
 		context.fill(); 
 		context.drawImage(rocket.image, rocket.x, rocket.y, rocket.width, rocket.height);
