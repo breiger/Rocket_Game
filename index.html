@@ -33,7 +33,7 @@
 	function play_sound(){
 		thruster_sound.play(); 
 	}
-	thruster_sound.on('end', play_sound());
+	thruster_sound.on('end', function(){(play_sound()});
 	var canvas = document.querySelector("canvas");
 	//canvas.addEventListener("touchstart", play_sound , false); 
 	canvas.addEventListener("click", play_sound, false); 
