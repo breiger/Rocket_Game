@@ -19,21 +19,85 @@
 </head>
 <body>
 
-	<audio loop id="myaudio"></audio>
-
 	<canvas></canvas>
 
 </body>
 
 <script>
+	var audaudContext = new (window.AudioaudContext || window.webkitAudioaudContext)(); 
+	var sounds = ['rocket-launch.wav']
 	
+	class Buffer {
+
+  		constructor(audaudContext, urls) {  
+   			this.audaudContext = audContext;
+    			this.urls = urls;
+   			this.buffer = [];
+ 		 }
+
+ 		 loadSound(url, index) {
+    			let request = new XMLHttpRequest();
+   			request.open('get', url, true);
+    			request.responseType = 'arraybuffer';
+    			let thisBuffer = this;
+    			request.onload = function() {
+      				thisBuffer.audContext.decodeAudioData(request.response, function(buffer) {
+        				thisBuffer.buffer[index] = buffer;
+        				updateProgress(thisBuffer.urls.length);
+        				if(index == thisBuffer.urls.length-1) {
+          					thisBuffer.loaded();
+       					 }       
+      				});
+    			};
+    			request.send();
+ 		 };
+
+ 		 loadAll() {
+    			this.urls.forEach((url, index) => {
+      				this.loadSound(url, index);
+    			})
+ 		 }
+
+ 		 loaded() {
+    			console.log("loaded");
+  		}
+
+  		getSoundByIndex(index) {
+    			return this.buffer[index];
+ 		 }
+
+	}
+
+	class Sound() {
+
+  		constructor(audContext, buffer) {
+    		this.audContext = audContext;
+    		this.buffer = buffer;
+  		}
+
+  		init() {
+   			this.gainNode = this.audContext.createGain();
+    			this.source = this.audContext.createBufferSource();
+    			this.source.buffer = this.buffer;
+    			this.source.connect(this.gainNode);
+    			this.gainNode.connect(this.audContext.destination);
+ 		 }
+
+  		play() {
+    			this.setup();
+    			this.source.start(this.audContext.currentTime);
+  		}  
+
+  		stop() {
+   			this.gainNode.gain.exponentialRampToValueAtTime(0.001, this.audContext.currentTime + 0.5);
+    			this.source.stop(this.audContext.currentTime + 0.5);
+  		}
+
+	}
+
+	let buffer = new Buffer(audContext, sounds);
+	buffer.loadAll();	
 	
-   	var thruster_sound = document.getElementById("myaudio");
-    	thruster_sound.src = 'rocket-launch.wav';
-    	thruster_sound.setAttribute("preload", "auto");
-    	thruster_sound.setAttribute("controls", "none");
-    	thruster_sound.style.display = "none";
-	thruster_sound.addEventListener("ended", play_sound, false);
 	var canvas = document.querySelector("canvas");
 	canvas.addEventListener("touchstart", play_sound, false); 
 	canvas.addEventListener("click", play_sound, false); 
@@ -124,8 +188,8 @@
 	}
 	
 	function play_sound(){
-		thruster_sound.currentTime = 1; 
-		thruster_sound.play(); 
+		sound = new Sound(audContext, buffer.getSoundByIndex(0));
+		sound.play();
 	}
 	
 	
