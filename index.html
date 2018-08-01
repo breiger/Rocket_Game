@@ -24,13 +24,13 @@
 </body>
 
 <script>
-	var audaudContext = new (window.AudioaudContext || window.webkitAudioaudContext)(); 
+	var audContext = new (window.AudioContext || window.webkitAudioContext)(); 
 	var sounds = ['rocket-launch.wav']
 	
 	class Buffer {
 
-  		constructor(audaudContext, urls) {  
-   			this.audaudContext = audContext;
+  		constructor(audContext, urls) {  
+   			this.audContext = audContext;
     			this.urls = urls;
    			this.buffer = [];
  		 }
@@ -46,11 +46,11 @@
         				updateProgress(thisBuffer.urls.length);
         				if(index == thisBuffer.urls.length-1) {
           					thisBuffer.loaded();
-       					 }       
+       					}       
       				});
     			};
     			request.send();
- 		 };
+ 		 }
 
  		 loadAll() {
     			this.urls.forEach((url, index) => {
@@ -64,7 +64,7 @@
 
   		getSoundByIndex(index) {
     			return this.buffer[index];
- 		 }
+ 		}
 
 	}
 
