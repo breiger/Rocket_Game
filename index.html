@@ -30,7 +30,7 @@
 	var thruster_sound = new Pizzicato.Sound('rocket-launch.wav', function() {
     			console.log("sound loaded"); 
 		});
-	thruster_sound.on('end', thruster_sound.play(0,0)); 
+	thruster_sound.on('end', play_sound); 
 	var canvas = document.querySelector("canvas");
 	//canvas.addEventListener("touchstart", playsound , false); 
 	canvas.addEventListener("click", play_sound, false); 
