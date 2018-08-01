@@ -31,7 +31,7 @@
     			console.log("sound loaded"); 
 		});
 	function play_sound(){
-		thruster_sound.play(); 
+		thruster_sound.play(0,0); 
 	}
 	thruster_sound.on('end', function(){play_sound()});
 	var canvas = document.querySelector("canvas");
