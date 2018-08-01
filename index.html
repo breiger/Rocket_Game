@@ -23,81 +23,9 @@
 
 </body>
 
-<script>
-	var audContext = new (window.AudioContext || window.webkitAudioContext)(); 
-	var sounds = ['rocket-launch.wav']
+	<script src="pizzicato.js"></script>
 	
-class Buffer {
-
-  constructor(audContext, urls) {  
-    this.context = audContext;
-    this.urls = urls;
-    this.buffer = [];
-  }
-
-  loadSound(url, index) {
-    let request = new XMLHttpRequest();
-    request.open('get', url, true);
-    request.responseType = 'arraybuffer';
-    let thisBuffer = this;
-    request.onload = function() {
-      thisBuffer.context.decodeAudioData(request.response, function(buffer) {
-        thisBuffer.buffer[index] = buffer;
-        updateProgress(thisBuffer.urls.length);
-        if(index == thisBuffer.urls.length-1) {
-          thisBuffer.loaded();
-        }       
-      });
-    };
-    request.send();
-  };
-
-  loadAll() {
-    this.urls.forEach((url, index) => {
-      this.loadSound(url, index);
-    })
-  }
-
-  loaded() {
-    // what happens when all the files are loaded
-  }
-
-  getSoundByIndex(index) {
-    return this.buffer[index];
-  }
-
-}
-
-	class Sound() {
-
-  		constructor(audContext, buffer) {
-    		this.audContext = audContext;
-    		this.buffer = buffer;
-  		}
-
-  		init() {
-   			this.gainNode = this.audContext.createGain();
-    			this.source = this.audContext.createBufferSource();
-    			this.source.buffer = this.buffer;
-    			this.source.connect(this.gainNode);
-    			this.gainNode.connect(this.audContext.destination);
- 		 }
-
-  		play() {
-    			this.setup();
-    			this.source.start(this.audContext.currentTime);
-  		}  
-
-  		stop() {
-   			this.gainNode.gain.exponentialRampToValueAtTime(0.001, this.audContext.currentTime + 0.5);
-    			this.source.stop(this.audContext.currentTime + 0.5);
-  		}
-
-	}
-
-	let buffer = new Buffer(audContext, sounds);
-	buffer.loadAll();	
-	
+<script>	
 	var canvas = document.querySelector("canvas");
 	canvas.addEventListener("touchstart", play_sound, false); 
 	canvas.addEventListener("click", play_sound, false); 
@@ -188,8 +116,10 @@ class Buffer {
 	}
 	
 	function play_sound(){
-		sound = new Sound(audContext, buffer.getSoundByIndex(0));
-		sound.play();
+		var thruster_sound = new Pizzicato.Sound('rocket-launch.wav', function() {
+    			console.log("sound loaded"); 
+    			thruster_sound.play();
+		});
 	}
 	
 	
