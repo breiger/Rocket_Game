@@ -30,6 +30,7 @@
 	var thruster_sound = new Pizzicato.Sound('rocket-launch.wav', function() {
     			console.log("sound loaded"); 
 		});
+	thruster_sound.attack = 0; 
 	function play_sound(){
 		thruster_sound.play(0,0); 
 	}
