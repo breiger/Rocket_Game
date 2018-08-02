@@ -31,10 +31,11 @@
     			console.log("sound loaded"); 
 		});
 	thruster_sound.attack = 0; 
+	thruster_sound.loop = true; 
 	function play_sound(){
-		thruster_sound.play(0,4);
+		thruster_sound.play();
 	}
-	thruster_sound.on('stop', function(){thruster_sound.play(0,4)});
+	//thruster_sound.on('stop', function(){thruster_sound.play(0,4)});
 	var canvas = document.querySelector("canvas");
 	canvas.addEventListener("touchstart", play_sound , false); 
 	//canvas.addEventListener("click", play_sound, false); 
