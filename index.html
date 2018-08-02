@@ -34,10 +34,10 @@
 	function play_sound(){
 		thruster_sound.play(0,0);
 	}
-	thruster_sound.on('stop', function(){play_sound()});
+	thruster_sound.on('stop', function(){thruster_sound.play(0,1)});
 	var canvas = document.querySelector("canvas");
-	//canvas.addEventListener("touchstart", play_sound , false); 
-	canvas.addEventListener("click", play_sound, false); 
+	canvas.addEventListener("touchstart", play_sound , false); 
+	//canvas.addEventListener("click", play_sound, false); 
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight; 
 	var context = canvas.getContext("2d");
