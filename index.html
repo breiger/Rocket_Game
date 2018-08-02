@@ -22,21 +22,44 @@
 	<canvas></canvas>
 
 </body>
-
-	<script src="Pizzicato.js"></script>
 	
 <script>
-	
-	var thruster_sound = new Pizzicato.Sound('rocket-launch.wav', function() {
-    			console.log("sound loaded"); 
-		});
-	thruster_sound.attack = 0; 
-	thruster_sound.release = 0; 
-	thruster_sound.loop = true; 
-	function play_sound(){
-		thruster_sound.play();
+
+	let acontext = new (window.AudioContext || window.webkitAudioContext)(); 
+
+	let soundBuffer;
+
+	let xhr = new XMLHttpRequest(); 
+
+	xhr.open("GET", "rocket-launch.mp3", true); 
+
+	xhr.responseType = "arraybuffer";
+
+	xhr.send();
+
+	xhr.addEventListener("load", loadHandler, false);
+
+	function loadHandler(event){
+		context.decodeAudioData(
+			xhr.response, 
+			buffer =>{
+				soundBuffer = buffer;	
+			},
+			error => {
+				throw new Error ("audio cannot be decoded: " + error);
+			} 
+			);
 	}
-	//thruster_sound.on('stop', function(){thruster_sound.play(0,4)});
+
+	function playsound(){
+		let soundNode = acontext.createBufferSource();
+		soundNode.buffer = soundBuffer;
+		soundNode.loop = true; 
+		soundNode.connect(acontext.destination);
+		soundNode.start(acontext.currentTime);
+	}
+
+	
 	var canvas = document.querySelector("canvas");
 	canvas.addEventListener("touchstart", play_sound , false); 
 	//canvas.addEventListener("click", play_sound, false); 
